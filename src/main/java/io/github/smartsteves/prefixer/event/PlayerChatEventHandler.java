@@ -12,20 +12,21 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 /**
  * Created by JUN on 2016-02-13.
+ * Handle event that player chat.
  */
 public class PlayerChatEventHandler implements Listener {
-    @EventHandler(priority = EventPriority.MONITOR,ignoreCancelled = true)
-    public void onChat(AsyncPlayerChatEvent event){
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        if(DataContainer.getInstance().getData(player)==null){
-            Config.getInstance().getLocalizer().sendMessageLocalize(player,"chat.notReadYet");
+        if (DataContainer.getInstance().getData(player) == null) {
+            Config.getInstance().getLocalizer().sendMessageLocalize(player, "chat.notReadYet");
             return;
         }
-        PlayerData data= DataContainer.getInstance().getData(player);
+        PlayerData data = DataContainer.getInstance().getData(player);
         String message = event.getMessage();
-        if(player.hasPermission("prefixer.colorchat")){
-            message = ChatColor.translateAlternateColorCodes('&',message);
+        if (player.hasPermission("prefixer.colorchat")) {
+            message = ChatColor.translateAlternateColorCodes('&', message);
         }
-        event.setFormat(Config.getInstance().getLocalizer().localize("chat.format",Config.getInstance().getPermissionPrefix().isUse()?Config.getInstance().getPermissionPrefix().getPrefix(event.getPlayer()):data.getRefinedForcePrefix(),data.getRefinedUserPrefix(),player.getDisplayName(),message));
+        event.setFormat(Config.getInstance().getLocalizer().localize("chat.format", Config.getInstance().getPermissionPrefix().isUse() ? Config.getInstance().getPermissionPrefix().getPrefix(event.getPlayer()) : data.getRefinedForcePrefix(), data.getRefinedUserPrefix(), player.getDisplayName(), message));
     }
 }

@@ -1,9 +1,15 @@
 {
-  "ForcePrefix":{
+  "ForcePrefix": {
     "UsePermissionPrefix": false,
-    "Permission":[
-      {"Prefix":"[Admin]","Permission":"prefixer.admin"},
-      {"Prefix":"User","Permission":"prefixer.user"}
+    "Permission": [
+      {
+        "Prefix": "[Admin]",
+        "Permission": "prefixer.admin"
+      },
+      {
+        "Prefix": "User",
+        "Permission": "prefixer.user"
+      }
     ]
   },
   "Localize": {
@@ -49,52 +55,52 @@
       "ListArrayOutOfBound": "없는 페이지입니다.(마지막페이지: {0})"
     }
   },
-  "CommandData":{
-    "Prefix":{
+  "CommandData": {
+    "Prefix": {
       "Name": "칭호",
       "Usage": "칭호",
       "Permission": "prefix.user",
-      "Remove":{
+      "Remove": {
         "Name": "지우기",
         "Usage": "/칭호 지우기 [칭호]",
         "Permission": "Prefix.user"
       },
-      "Set":{
+      "Set": {
         "Name": "설정",
         "Usage": "/칭호 설정 [칭호]",
         "Permission": "Prefixer.user"
       },
-      "UnUse":{
+      "UnUse": {
         "Name": "사용안함",
         "Usage": "/칭호 사용안함",
         "Permission": "Prefixer.user"
       },
-      "List":{
+      "List": {
         "Name": "목록",
         "Usage": "/칭호 목록 [페이지]",
         "Permission": "Prefixer.user"
       }
     },
-    "PrefixManage":{
+    "PrefixManage": {
       "Name": "칭호관리",
       "Usage": "칭호관리",
       "Permission": "Prefixer.admin",
-      "Give":{
+      "Give": {
         "Name": "주기",
         "Usage": "/칭호 주기 [닉네임] [칭호]",
         "Permission": "Prefixer.admin"
       },
-      "Set":{
+      "Set": {
         "Name": "유저칭호설정",
         "Usage": "/칭호 유저칭호설정 [닉네임] [칭호]",
         "Permission": "Prefixer.admin"
       },
-      "SetForcePrefix":{
+      "SetForcePrefix": {
         "Name": "강제칭호설정",
         "Usage": "/칭호 강제칭호설정 [닉네임] [칭호]",
         "Permission": "Prefixer.admin"
       },
-      "Remove":{
+      "Remove": {
         "Name": "지우기",
         "Usage": "/칭호 지우기 [닉네임] [칭호]",
         "Permission": "Prefixer.admin"

@@ -14,10 +14,12 @@ import org.bukkit.event.server.ServerCommandEvent;
 
 /**
  * Created by JUN on 2016-02-10.
+ * Handle commandEvent.
  */
 public class CommandEventHandler implements Listener {
     CommandHolder holder;
-    public CommandEventHandler(){
+
+    public CommandEventHandler() {
         holder = new CommandHolder();
         holder.registerSubCommand(new Prefix());
         holder.registerSubCommand(new PrefixManage());
@@ -32,17 +34,20 @@ public class CommandEventHandler implements Listener {
         prefixManageCommandHolder.registerSubCommand(new io.github.smartsteves.prefixer.command.command.PrefixManage.Set());
         prefixManageCommandHolder.registerSubCommand(new SetForcePrefix());
     }
+
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onConsoleCommand(ServerCommandEvent event){
+    public void onConsoleCommand(ServerCommandEvent event) {
         boolean result = executeCommand(event.getSender(), event.getCommand().split(" "));
         event.setCancelled(result);
     }
+
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-    public void onPlayerCommand(PlayerCommandPreprocessEvent event){
+    public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
         boolean result = executeCommand(event.getPlayer(), event.getMessage().substring(1, event.getMessage().length()).split(" "));
         event.setCancelled(result);
     }
-    public boolean executeCommand(CommandSender sender, String[] args){
-        return holder.execute(args,sender);
+
+    public boolean executeCommand(CommandSender sender, String[] args) {
+        return holder.execute(args, sender);
     }
 }

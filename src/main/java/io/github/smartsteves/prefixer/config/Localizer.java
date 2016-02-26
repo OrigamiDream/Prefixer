@@ -4,7 +4,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,13 +11,15 @@ import java.util.logging.Level;
 
 /**
  * Created by JUN on 2016-02-07.
+ * Class for Localizer. All the message of plugin is sent using this class
  */
 public abstract class Localizer {
-    private final HashMap<String,String> data = new HashMap<>();
+    private final HashMap<String, String> data = new HashMap<>();
 
-    public Localizer(JsonObject object){
-        readLocalizeData("",object);
+    public Localizer(JsonObject object) {
+        readLocalizeData("", object);
     }
+
     public String localize(String message, String... args) {
         if (!data.containsKey(message.toLowerCase())) {
             if (message.equalsIgnoreCase("localize.noSuchMessage")) {
@@ -32,6 +33,7 @@ public abstract class Localizer {
         }
         return target;
     }
+
     private void readLocalizeData(String parent, JsonObject object) { //reading json and add data in hashmap.
         for (Map.Entry<String, JsonElement> entry : object.entrySet()) {
             JsonElement element = entry.getValue();
@@ -42,11 +44,13 @@ public abstract class Localizer {
             }
         }
     }
+
     public void log(Level level, String message, String... args) {
         Bukkit.getLogger().log(level, localize(message, args));
     }
-    public void sendMessageLocalize(CommandSender sender,  String message, String... args){
-        sender.sendMessage(localize(message,args));
+
+    public void sendMessageLocalize(CommandSender sender, String message, String... args) {
+        sender.sendMessage(localize(message, args));
     }
 
 }
